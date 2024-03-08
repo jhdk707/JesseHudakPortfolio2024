@@ -1,5 +1,19 @@
+
+<template>
+  <div class="greetings">
+  <h1 class="text-5xl font-extrabold dark:text-white">Jesse Hudak</h1>
+  <h2 class="text-3xl font-extrabold dark:text-gray">Full Stack Web Developer</h2>
+  <p>{{ quote }}</p>
+  <CustomNavbar/>
+  </div>
+  
+</template>
+
+
 <script setup>
 import axios from 'axios';
+import CustomNavbar from './CustomNavbar.vue';
+
 import { ref, onMounted } from 'vue';
 
 // Define a reactive property to hold the quote
@@ -59,14 +73,6 @@ defineProps({
 })
 </script>
 
-<template>
-  <div class="greetings">
-  <h1 class="text-5xl font-extrabold dark:text-white">Jesse Hudak</h1>
-  <h2 class="text-3xl font-extrabold dark:text-gray">Full Stack Web Developer</h2>
-  <p>{{ quote }}</p>
-  </div>
-  
-</template>
 
 <style scoped>
 h1 {

@@ -1,8 +1,12 @@
 <template>
   <div class="flex items-center">
     <div class="container">
-      <div class="carousel container h-100">
-        <fwb-carousel no-indicators :pictures="pictures" />
+      <div class="embla" ref="emblaRef" style="max-height: 500px;">    
+        <div class="embla__container">      
+          <div class="embla__slide" v-for="(slide, index) in slides" :key="index">
+            <img :src="slide.src" :alt="slide.alt" class="slide-image">
+          </div>    
+        </div>  
       </div>
       <p class="bio">
         My name is Jesse Hudak, a dedicated problem solver, eager explorer of intricate challenges, and a conversationalist with a knack for engaging dialogue.
@@ -36,24 +40,31 @@
         <li>Spending hours on Google Maps looking at the world, finding interesting places to go or research </li>
       </ul>
       </div>
-
-      <!-- <h4>
-        <p>Copyright 2023 @ Jesse Hudak | Made with Vue.js/ Vite/ TailwindCSS & VSCode</p>
-      </h4> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import { FwbCarousel } from 'flowbite-vue'
+// import { FwbCarousel } from 'flowbite-vue'
+import { watchEffect } from 'vue'
+import Autoplay from 'embla-carousel-autoplay'
+import emblaCarouselVue from 'embla-carousel-vue'
+  const [emblaRef, emblaApi] = emblaCarouselVue({loop: true}, [Autoplay()])
+  
+  watchEffect(() => {
+    if (emblaApi.value) {
+      console.log(emblaApi.value.slideNodes()) //access api
+    }
+  })
 
-const pictures = [
+
+const slides = [
   {src: 'src/assets/images/HeadshotCasual12142023.png', alt: 'Headshot'},
   {src: 'src/assets/images/Carweek.jpg', alt: 'Jesse at Carshow'},
   {src: 'src/assets/images/EscapeRoom.jpg', alt: 'Escape Room Team Photo'},
-  {src: 'src/assets/images/BeneciaFriends.jpg', alt: 'Downtown Benecia on birthday'},
-  {src: 'src/assets/images/BabyGoat.jpg', alt: 'Jesse with baby goat'},
-  {src: 'src/assets/images/OaklandMetro.jpg', alt: 'Jesse with Aaron from Giant Squid'},
+  {src: 'src/assets/images/BeneciaFriends.jpg', alt: 'Downtown Benecia with cousins on birthday'},
+  {src: 'src/assets/images/BabyGoat.jpg', alt: 'Child Jesse with baby goat'},
+  {src: 'src/assets/images/OaklandMetro.jpg', alt: 'Jesse with Aaron from Giant Squid at Oakland Metro'},
   {src: 'src/assets/images/OroBeach.jpg', alt: 'Oro Beach Portrait'},
   {src: 'src/assets/images/PossoStage.jpg', alt: 'Posso Stage band with Grandfather'},
   {src: 'src/assets/images/RuthGrange.jpg', alt: 'Rutherford battle of the bands'},
@@ -87,7 +98,7 @@ const pictures = [
 }
 
 img, video {
-  object-fit: cover;
+  object-fit: contain;
   height: auto;
 }
 
@@ -123,6 +134,28 @@ li{
 h4{
   margin-top: 5em;
 }
+
+.embla {   
+ overflow: hidden;  
+}  
+
+.embla__container {    
+  display: flex;  
+}  
+
+.embla__slide {    
+  flex: 0 0 100%;    
+  min-width: 0;  
+  height: 500px;
+}
+
+.slide-image {
+  max-height: 500px; /* Set the maximum height of the images */
+  width: auto; /* Ensure the width adjusts proportionally */
+  display: block; /* Set the display property to block */
+  margin: 0 auto; /* Center the images horizontally */
+}
+
 
 @media (max-width: 1200px) {
   .about {
