@@ -2,7 +2,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import MainHeader from '@/components/MainHeader.vue';
-import CustomNavbar from './components/CustomNavbar.vue';
+// import CustomNavbar from './components/CustomNavbar.vue';
 import CustomFooter from './components/CustomFooter.vue';
 </script>
 
@@ -12,7 +12,7 @@ import CustomFooter from './components/CustomFooter.vue';
       <div class="wrapper">
       <!-- Insert header components here, ROUTER LINKS are in /components/CustomNavBar.vue -->
         <MainHeader/>
-        <CustomNavbar  />
+        <!-- <CustomNavbar  /> -->
       </div>
     </header>
       <div class="body">
