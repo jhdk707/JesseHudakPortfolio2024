@@ -1,70 +1,37 @@
+
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import MainHeader from '@/components/MainHeader.vue';
+import CustomNavbar from './components/CustomNavbar.vue';
+import CustomFooter from './components/CustomFooter.vue';
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+ <template class="overflow-y-auto">
+   <header>
+      <div class="wrapper">
+      <!-- Insert header components here, ROUTER LINKS are in /components/CustomNavBar.vue -->
+        <MainHeader/>
+        <CustomNavbar  />
+      </div>
+    </header>
+      <div class="body">
+        <RouterView />
+      </div>
+    <div class="footer">
+        <CustomFooter/>
     </div>
-  </header>
+</template> 
 
-  <RouterView />
-</template>
+
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
 
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 
   header .wrapper {
@@ -74,12 +41,13 @@ nav a:first-of-type {
   }
 
   nav {
-    text-align: left;
-    margin-left: -1rem;
+    text-align: center;
     font-size: 1rem;
-
-    padding: 1rem 0;
+    padding: 1rem;
     margin-top: 1rem;
+    margin-right: 1rem;
   }
 }
+
+
 </style>
