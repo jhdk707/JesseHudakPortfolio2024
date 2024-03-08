@@ -154,6 +154,7 @@ h4{
   width: auto; /* Ensure the width adjusts proportionally */
   display: block; /* Set the display property to block */
   margin: 0 auto; /* Center the images horizontally */
+  padding: .25em;  /* Give images a little padding to look better on slide change */
 }
 
 
