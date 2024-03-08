@@ -17,10 +17,11 @@ import CustomFooter from './components/CustomFooter.vue';
     </header>
       <div class="body">
         <RouterView />
-      </div>
-    <div class="footer">
         <CustomFooter/>
-    </div>
+      </div>
+    <!-- <div class="footer">
+        <CustomFooter/>
+    </div> -->
 </template> 
 
 

@@ -106,12 +106,12 @@ export default {
   methods: {
     downloadResume() {
       // Direct link to the Resume on Google Drive
-      const resumeLink = 'https://drive.google.com/file/d/1Lrb0K5mN_CPUp2JyMDL8et4-UtWvwPWL/view?usp=drive_link';
+      const resumeLink = 'https://drive.google.com/file/d/1Lrb0K5mN_CPUp2JyMDL8et4-UtWvwPWL/view?usp=sharing';
       window.open(resumeLink, '_blank');
     },
     downloadUcbcert() {
       // Direct link to the UCB Full Stack Cert on Google Drive
-      const ucbCertLink = 'https://drive.google.com/file/d/1g9cpCORzjobqCHFcjVXqtUlti0skvfXq/view?usp=drive_link';
+      const ucbCertLink = 'https://drive.google.com/file/d/1g9cpCORzjobqCHFcjVXqtUlti0skvfXq/view?usp=sharing';
       window.open(ucbCertLink, '_blank');
     },
   },
