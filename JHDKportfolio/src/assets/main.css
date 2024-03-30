@@ -6,10 +6,12 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+  width: 70vw;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+  justify-content: center;
+  align-items: center;
 }
 
 a,
@@ -27,13 +29,13 @@ a,
 
 @media (min-width: 1024px) {
   body {
-    display: flex;
+    display: block;
     place-items: center;
+    max-width: 100%;
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    display: flex;
+    width: 90vw;
   }
 }

@@ -12,9 +12,9 @@
             <li>jQuery</li>
             <li>Responsive Design</li>
             <li>React</li>
-            <li>Bootstrap</li>
             <li>Vue3 Framework</li>
             <li>Css Processors - TailwindCSS & Bulma</li>
+            <li>Bootstrap</li>
           </ul>
         </div>
       </fwb-accordion-content>
@@ -29,6 +29,7 @@
             <li>Express</li>
             <li>Model View Controller (MVC)</li>
             <li>Progressive Web Applications (PWA)</li>
+            <li>AWS Amplify v6</li>
           </ul>
         </div>
       </fwb-accordion-content>
@@ -40,10 +41,10 @@
           <li>mySql</li>
           <li>noSql</li>
           <li>Sequelize</li>
-          <li>MongoDB</li>
+          <li>MongoDB / Atlas</li>
           <li>Mongoose</li>
           <li>graphQL</li>
-          <li>AWS Amplify</li>
+          <li>AWS DynamoDB</li>
         </ul>
       </fwb-accordion-content>
     </fwb-accordion-panel>
@@ -83,7 +84,7 @@ FwbAccordionPanel
 
 .accordioncontainer{
 margin-top: 2em;
-
+width: 70vw;
 }
 
 .fwb-accordion-content{

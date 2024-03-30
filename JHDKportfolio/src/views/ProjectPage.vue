@@ -26,6 +26,7 @@
             </div>
         </template>
 <script>
+
 //IMAGE IMPORTS FOR PROJECT CARDS - 11/29/2023
 import NationalParksimg from '@/assets/images/NTLPRKSSCREENCAP.png';
 import NoteTakerimg from '@/assets/images/Notetaker5000sc.png';

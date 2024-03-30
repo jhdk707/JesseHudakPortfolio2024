@@ -8,47 +8,48 @@ import CustomFooter from './components/CustomFooter.vue';
 
 
  <template class="overflow-y-auto">
-   <header>
-      <div class="wrapper">
-      <!-- Insert header components here, ROUTER LINKS are in /components/CustomNavBar.vue -->
-        <MainHeader/>
-        <!-- <CustomNavbar  /> -->
-      </div>
-    </header>
       <div class="body">
+        <div class="headercontainer">
+        <MainHeader/>
+        </div>
+        <div class="viewcontainer">
         <RouterView />
+        </div>
+        <div class="footercontainer">
         <CustomFooter/>
+        </div>
       </div>
-    <!-- <div class="footer">
-        <CustomFooter/>
-    </div> -->
 </template> 
 
 
 
 <style scoped>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: center;
-    font-size: 1rem;
-    padding: 1rem;
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
+.body {
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center child elements horizontally */
+  justify-content: center; /* Center child elements vertically */
+  height: 100vh; /* Set full viewport height */
 }
 
+.viewcontainer {
+  width: 80vw;
+}
+
+.headercontainer {
+  position: fixed; /* Fix header at the top */
+  top: 0; /* Position at the top */
+  width: 90vw; /* Occupy full width */
+  z-index: 1000; /* Ensure header is above other content */
+  background-color: #181818;
+}
+
+.footercontainer {
+  position: fixed; /* Fix footer at the bottom */
+  bottom: 0; /* Position at the bottom */
+  width: 70vw; /* Occupy full width */
+  z-index: 1000; /* Ensure footer is above other content */
+}
 
 </style>

@@ -1,11 +1,13 @@
 
 <template>
+  <div class="headercontainer">
   <div class="greetings">
   <h1 class="text-5xl font-extrabold dark:text-white">Jesse Hudak</h1>
   <h2 class="text-3xl font-extrabold dark:text-gray">Full Stack Web Developer</h2>
   <p>{{ quote }}</p>
   <CustomNavbar/>
   </div>
+</div>
   
 </template>
 
@@ -75,24 +77,23 @@ defineProps({
 
 
 <style scoped>
+
 h1 {
   font-size: 2.6rem;
   position: left;
   top: -10px;
   color: hsla(160, 100%, 37%, 1);
   text-shadow: 2px 3px 3px rgb(30, 30, 30);
-  padding-left: 1.50em;
 }
 
 h2 {
   font-size: 1.6rem;
   position: left;
   text-shadow: 2px 3px 3px rgb(30, 30, 30);
-  padding-left: 2.45em;
 }
 
 p{
-  padding-left: 4em;
+  padding-bottom: 1em;
   position: left;
 }
 
