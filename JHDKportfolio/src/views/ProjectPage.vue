@@ -29,7 +29,7 @@
 
 //IMAGE IMPORTS FOR PROJECT CARDS - 11/29/2023
 import NationalParksimg from '@/assets/images/NTLPRKSSCREENCAP.png';
-import NoteTakerimg from '@/assets/images/Notetaker5000sc.png';
+import NoteTakerimg from '@/assets/images/NoteTaker5000sc.png';
 import NeedleJunkeezimg from '@/assets/images/needlejunkeez.png';
 import WorkdaySchimg from '@/assets/images/workdayscheduler.png';
 import WeatherDashimg from '@/assets/images/weatherapp.png';
