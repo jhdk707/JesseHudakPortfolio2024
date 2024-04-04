@@ -30,26 +30,33 @@ import CustomFooter from './components/CustomFooter.vue';
   flex-direction: column; /* Stack child elements vertically */
   align-items: center; /* Center child elements horizontally */
   justify-content: center; /* Center child elements vertically */
-  height: 100vh; /* Set full viewport height */
+  height: 90vh; /* Set full viewport height */
 }
 
 .viewcontainer {
-  width: 80vw;
+  width: 90vw;
+  margin-top: 7em;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .headercontainer {
   position: fixed; /* Fix header at the top */
-  top: 0; /* Position at the top */
-  width: 90vw; /* Occupy full width */
+  top: 0; 
+  width: 90vw; 
   z-index: 1000; /* Ensure header is above other content */
   background-color: #181818;
+  padding-top: 1em;
 }
 
 .footercontainer {
   position: fixed; /* Fix footer at the bottom */
-  bottom: 0; /* Position at the bottom */
-  width: 70vw; /* Occupy full width */
+  bottom: 0; 
+  width: 70vw; 
   z-index: 1000; /* Ensure footer is above other content */
+  padding-bottom: 2em;
 }
 
 </style>

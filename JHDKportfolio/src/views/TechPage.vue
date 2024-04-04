@@ -1,6 +1,6 @@
 <template>
   <div class="accordioncontainer">
-    <fwb-accordion flush>
+    <fwb-accordion flush class="skillHeader">
     <fwb-accordion-panel>
       <fwb-accordion-header> Front-end skills</fwb-accordion-header>
       <fwb-accordion-content>
@@ -82,19 +82,13 @@ FwbAccordionPanel
 
 <style scoped>
 
-.accordioncontainer{
-margin-top: 2em;
-width: 70vw;
+.skillHeader {
+  font-size: 18px;
+  width: 70vw;
+  margin: auto;
+  display: block;
 }
 
-.fwb-accordion-content{
-border-left: solid rgb(227, 160, 8);
-border-bottom: solid rgb(227, 160, 8)
-}
-
-button {
-background: yellow;
-}
 
 
 </style>

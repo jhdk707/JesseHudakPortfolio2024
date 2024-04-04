@@ -110,14 +110,16 @@ export default {
 
 <style scoped>
 .project-container {
-  margin-top: 1em;
+  margin-top: 5em;
+  margin-bottom: 2em;
   color: white;
-  max-height: 800px; 
+  max-height: 800px;
+  max-width: 100vw;
   overflow-y: auto; /* Enable vertical scrolling */
   scrollbar-width: thin; /* For Firefox */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .project-container::-webkit-scrollbar {
@@ -125,8 +127,16 @@ export default {
 }
 
 .projectcard {
- flex: 0 1 300px;
- margin: 20px;
+ /* flex: 0 1 300px; */
+ flex: 0 1 calc(50% - 20px); /* Two cards per row on smaller screens */
+ margin: 15px;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 440px) {
+  .project-card {
+    flex: 0 1 calc(100% - 20px); /* One card per row on smaller screens */
+  }
 }
 
 
