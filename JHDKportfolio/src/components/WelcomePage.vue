@@ -22,6 +22,7 @@ const closeContactModal = () => {
 </script>
 
 <template>
+  <div class="homeContainer">
   <WelcomeItem>
     <template #icon>
       <WaveIcon />
@@ -98,6 +99,7 @@ const closeContactModal = () => {
     <template #heading></template>
    blahblahblah
   </WelcomeItem> -->
+</div>
 </template>
 
 
@@ -119,6 +121,11 @@ export default {
 </script>
 
 <style>
+
+.homeContainer{
+  max-width: 70vw;
+  align-items: center;
+}
 
 .green-link {
   color: #00a86b;

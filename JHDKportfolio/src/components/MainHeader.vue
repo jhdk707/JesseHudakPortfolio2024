@@ -1,12 +1,21 @@
-
+<!-- MainHeader.vue -->
 <template>
+  <div class="headercontainer">
   <div class="greetings">
   <h1 class="text-5xl font-extrabold dark:text-white">Jesse Hudak</h1>
   <h2 class="text-3xl font-extrabold dark:text-gray">Full Stack Web Developer</h2>
   <p>{{ quote }}</p>
+  <button class="burger-menu" @click="toggleDropdown">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Dropdown menu -->
+    <div class="dropdown" :class="{ active: isDropdownOpen }">
   <CustomNavbar/>
   </div>
-  
+</div>
 </template>
 
 
@@ -18,6 +27,11 @@ import { ref, onMounted } from 'vue';
 
 // Define a reactive property to hold the quote
 const quote = ref('');
+const isDropdownOpen = ref(false);
+
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value;
+};
 
 // Function to fetch the quote from the API
 const fetchRandomQuote = async () => {
@@ -75,27 +89,45 @@ defineProps({
 
 
 <style scoped>
+
+.burger-menu {
+  display: none; /* Hide by default */
+}
+
+.dropdown {
+  display: none;
+}
+
 h1 {
   font-size: 2.6rem;
   position: left;
   top: -10px;
   color: hsla(160, 100%, 37%, 1);
   text-shadow: 2px 3px 3px rgb(30, 30, 30);
-  padding-left: 1.50em;
 }
 
 h2 {
   font-size: 1.6rem;
   position: left;
   text-shadow: 2px 3px 3px rgb(30, 30, 30);
-  padding-left: 2.45em;
 }
 
 p{
-  padding-left: 4em;
+  padding-bottom: 1em;
   position: left;
 }
 
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block; /* Show burger menu button on smaller screens */
+  }
+
+  .dropdown.active {
+    display: block; /* Show dropdown menu when active */
+  }
+
+  /* Additional styles for responsive design... */
+}
 
 
 </style>

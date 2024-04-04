@@ -1,6 +1,6 @@
 <template>
   <div class="accordioncontainer">
-    <fwb-accordion flush>
+    <fwb-accordion flush class="skillHeader">
     <fwb-accordion-panel>
       <fwb-accordion-header> Front-end skills</fwb-accordion-header>
       <fwb-accordion-content>
@@ -12,9 +12,9 @@
             <li>jQuery</li>
             <li>Responsive Design</li>
             <li>React</li>
-            <li>Bootstrap</li>
             <li>Vue3 Framework</li>
             <li>Css Processors - TailwindCSS & Bulma</li>
+            <li>Bootstrap</li>
           </ul>
         </div>
       </fwb-accordion-content>
@@ -29,6 +29,7 @@
             <li>Express</li>
             <li>Model View Controller (MVC)</li>
             <li>Progressive Web Applications (PWA)</li>
+            <li>AWS Amplify v6</li>
           </ul>
         </div>
       </fwb-accordion-content>
@@ -40,10 +41,10 @@
           <li>mySql</li>
           <li>noSql</li>
           <li>Sequelize</li>
-          <li>MongoDB</li>
+          <li>MongoDB / Atlas</li>
           <li>Mongoose</li>
           <li>graphQL</li>
-          <li>AWS Amplify</li>
+          <li>AWS DynamoDB</li>
         </ul>
       </fwb-accordion-content>
     </fwb-accordion-panel>
@@ -81,19 +82,13 @@ FwbAccordionPanel
 
 <style scoped>
 
-.accordioncontainer{
-margin-top: 2em;
-
+.skillHeader {
+  font-size: 18px;
+  width: 70vw;
+  margin: auto;
+  display: block;
 }
 
-.fwb-accordion-content{
-border-left: solid rgb(227, 160, 8);
-border-bottom: solid rgb(227, 160, 8)
-}
-
-button {
-background: yellow;
-}
 
 
 </style>

@@ -1,9 +1,9 @@
 <template>
-<footer class="bg-gray-500 rounded-lg shadow m-4 dark:bg-gray-800 fixed bottom-0 w-full">
-    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+   <div class="footercontainer">
+    <footer class="footerbar">
     <p class= "blurb"> © Jesse Hudak 2023 | Made with Vue.js/ Vite/ TailwindCSS & VSCode</p>
-    </div>
-</footer>
+    </footer>
+   </div>
 
 </template>
   
@@ -15,6 +15,13 @@
 
 
 <style>
+
+
+.footerbar{
+background: #272727;
+justify-content: center;
+padding: 1em;
+}
 
 .blurb{
 color: #00a86b;

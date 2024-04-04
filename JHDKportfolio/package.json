@@ -1,7 +1,6 @@
 {
   "name": "jhdkportfolio",
   "version": "0.0.1",
-  "homepage": "https://github.com/jhdk707/JesseHudakPortfolio2024/",
   "private": true,
   "scripts": {
     "dev": "vite",
