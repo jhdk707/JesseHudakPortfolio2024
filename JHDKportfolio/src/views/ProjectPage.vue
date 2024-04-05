@@ -45,6 +45,7 @@ export default {
         {
           id: 1,
           title: 'The AMERICAN SOMMELIER',
+          date: '4 / 5 / 24',
           image: AMSOMMimg,
           description: 'A Wine Course and membership based website for a Sommelier, to be able to sell courses and content. Built with SquareSpace with my dev partner, Tyler Dinslage',
           deployedLink: 'https://theamericansommelier.com',
@@ -52,6 +53,7 @@ export default {
         {
           id: 2,
           title: 'National Parks Reviewer 5000',
+          date: '4 / 5 / 24',
           image: NationalParksimg,
           description: 'A group project which included full-stack dev, client side, middleware, and back end. It was a lot of fun although we were met with some pretty big battles.',
           deployedLink: 'https://lit-eyrie-51719.herokuapp.com/',
@@ -110,13 +112,10 @@ export default {
 
 <style scoped>
 .project-container {
-  margin-top: 5em;
-  margin-bottom: 2em;
+  margin-top: 2%;
   color: white;
   max-height: 800px;
   max-width: 100vw;
-  overflow-y: auto; /* Enable vertical scrolling */
-  scrollbar-width: thin; /* For Firefox */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

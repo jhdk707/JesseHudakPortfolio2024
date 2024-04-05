@@ -83,9 +83,7 @@ const slides = [
 
 .container {
   color: white;
-  max-height: 750px; 
-  overflow-y: auto; /* Enable vertical scrolling */
-  scrollbar-width: thin; /* For Firefox */
+  max-height: 70vh;
 }
 
 .container::-webkit-scrollbar {
