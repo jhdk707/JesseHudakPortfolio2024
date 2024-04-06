@@ -35,17 +35,19 @@ import CustomFooter from './components/CustomFooter.vue';
 
 .viewcontainer {
   width: 90vw;
-  margin-top: 7em;
+  margin-top: 10em;
   padding: 1em;
   justify-content: center;
   align-items: center;
   display: flex;
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: thin; /* For Firefox */
 }
 
 .headercontainer {
   position: fixed; /* Fix header at the top */
   top: 0; 
-  width: 90vw; 
+  width: 100vw; 
   z-index: 1000; /* Ensure header is above other content */
   background-color: #181818;
   padding-top: 1em;
@@ -54,9 +56,8 @@ import CustomFooter from './components/CustomFooter.vue';
 .footercontainer {
   position: fixed; /* Fix footer at the bottom */
   bottom: 0; 
-  width: 70vw; 
+  width: 100vw; 
   z-index: 1000; /* Ensure footer is above other content */
-  padding-bottom: 2em;
 }
 
 </style>
