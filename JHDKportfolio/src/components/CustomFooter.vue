@@ -18,8 +18,6 @@
 
 
 .footerbar{
-/* background: #272727; */
-justify-content: center;
 padding: 1em;
 }
 

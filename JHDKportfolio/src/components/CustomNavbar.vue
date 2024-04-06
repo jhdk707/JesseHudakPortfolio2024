@@ -53,6 +53,7 @@ const isActive = (routePath) => {
 a {
   color: rgb(227, 160, 8);
   padding-left: .5em;
+  text-shadow: 1px 1px 3px black;
 }
 a.router-link-exact-active:hover {
   background-color: transparent;
