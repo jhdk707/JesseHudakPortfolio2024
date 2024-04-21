@@ -1,13 +1,13 @@
 <template>
   <div class="flex items-center">
     <div class="container">
-      <div class="embla" ref="emblaRef" style="max-height: 500px;">    
+      <!-- <div class="embla" ref="emblaRef" style="max-height: 500px;">    
         <div class="embla__container">      
           <div class="embla__slide" v-for="(slide, index) in slides" :key="index">
             <img :src="slide.src" :alt="slide.alt" class="slide-image">
           </div>    
         </div>  
-      </div>
+      </div> -->
       <p class="bio">
         My name is Jesse Hudak, a dedicated problem solver, eager explorer of intricate challenges, and a conversationalist with a knack for engaging dialogue.
         <br class="break">
@@ -46,29 +46,29 @@
 
 <script setup>
 // import { FwbCarousel } from 'flowbite-vue'
-import { watchEffect } from 'vue'
-import Autoplay from 'embla-carousel-autoplay'
-import emblaCarouselVue from 'embla-carousel-vue'
-  const [emblaRef, emblaApi] = emblaCarouselVue({loop: true}, [Autoplay()])
+// import { watchEffect } from 'vue'
+// import Autoplay from 'embla-carousel-autoplay'
+// import emblaCarouselVue from 'embla-carousel-vue'
+//   const [emblaRef, emblaApi] = emblaCarouselVue({loop: true}, [Autoplay()])
   
-  watchEffect(() => {
-    if (emblaApi.value) {
-      console.log(emblaApi.value.slideNodes()) //access api
-    }
-  })
+//   watchEffect(() => {
+//     if (emblaApi.value) {
+//       console.log(emblaApi.value.slideNodes()) //access api
+//     }
+//   })
 
 
-const slides = [
-  {src: 'src/assets/images/HeadshotCasual12142023.png', alt: 'Headshot'},
-  {src: 'src/assets/images/Carweek.jpg', alt: 'Jesse at Carshow'},
-  {src: 'src/assets/images/EscapeRoom.jpg', alt: 'Escape Room Team Photo'},
-  {src: 'src/assets/images/BeneciaFriends.jpg', alt: 'Downtown Benecia with cousins on birthday'},
-  {src: 'src/assets/images/BabyGoat.jpg', alt: 'Child Jesse with baby goat'},
-  {src: 'src/assets/images/OaklandMetro.jpg', alt: 'Jesse with Aaron from Giant Squid at Oakland Metro'},
-  {src: 'src/assets/images/OroBeach.jpg', alt: 'Oro Beach Portrait'},
-  {src: 'src/assets/images/PossoStage.jpg', alt: 'Posso Stage band with Grandfather'},
-  {src: 'src/assets/images/RuthGrange.jpg', alt: 'Rutherford battle of the bands'},
-]
+// const slides = [
+//   {src: 'src/assets/images/HeadshotCasual12142023.png', alt: 'Headshot'},
+//   {src: 'src/assets/images/Carweek.jpg', alt: 'Jesse at Carshow'},
+//   {src: 'src/assets/images/EscapeRoom.jpg', alt: 'Escape Room Team Photo'},
+//   {src: 'src/assets/images/BeneciaFriends.jpg', alt: 'Downtown Benecia with cousins on birthday'},
+//   {src: 'src/assets/images/BabyGoat.jpg', alt: 'Child Jesse with baby goat'},
+//   {src: 'src/assets/images/OaklandMetro.jpg', alt: 'Jesse with Aaron from Giant Squid at Oakland Metro'},
+//   {src: 'src/assets/images/OroBeach.jpg', alt: 'Oro Beach Portrait'},
+//   {src: 'src/assets/images/PossoStage.jpg', alt: 'Posso Stage band with Grandfather'},
+//   {src: 'src/assets/images/RuthGrange.jpg', alt: 'Rutherford battle of the bands'},
+// ]
 </script>
 
 <style>
