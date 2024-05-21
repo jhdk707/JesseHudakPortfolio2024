@@ -1,15 +1,80 @@
-<!-- WelcomePage.vue -->
+<template>
+  <div class="homeContainer justify-center overscroll-auto absolute inset-0">
+    <div class="welcome-content">
+      <div class="welcome-paragraph">
+        <h1>Welcome to my portfolio!</h1>
+        <h2>
+          This portfolio is where I like to keep record of accomplishments, showcase my work, certificates, and anything else I wish to share!
+        </h2>
+      </div>
+    </div>
+    
+    <WelcomeItem>
+      <template #icon>
+        <CommunityIcon />
+      </template>
+      <template #heading>Contact Me</template>
+      <fwb-button color="yellow" size="xs" outline>
+        <a href="https://github.com/jhdk707" target="_blank" rel="noopener" class="button-link">
+          GitHub
+        </a>
+      </fwb-button>
+      <br>
+      <fwb-button color="yellow" size="xs" outline>
+        <a href="https://www.linkedin.com/in/jesse-h-085117272/" target="_blank" rel="noopener">LinkedIn</a>
+      </fwb-button>
+      <br>
+      <div>
+        <!-- Button to open the ContactModal -->
+        <fwb-button color="yellow" size="xs" outline @click="openContactModal">Email Me</fwb-button>
+        <!-- Include the ContactModal component -->
+        <ContactModal :isOpen="isContactModalOpen" @close="closeContactModal" />
+      </div>
+    </WelcomeItem>
+
+    <WelcomeItem>
+      <template #icon>
+        <EcosystemIcon />
+      </template>
+      <template #heading> Resume & Certificates </template>
+      Download links for my Resume and Certificates that I have acquired
+      <br>
+      <fwb-button color="yellow" size="xs" outline @click="downloadResume">Resume</fwb-button>
+      <br>
+      <fwb-button color="yellow" size="xs" outline @click="downloadUcbcert">UCB Web Full-Stack Certificate</fwb-button>
+    </WelcomeItem> 
+
+    <WelcomeItem>
+      <template #icon>
+        <QuoteIcon />
+      </template>
+      <template #heading>Quote of the Day</template>
+      <p v-if="quote">{{ quote }}</p>
+      <p v-else>Loading quote...</p> <!-- Placeholder content -->
+      <br>
+    </WelcomeItem>
+
+    <!-- PLACEHOLDER TEMPLATE FOR ADDITIONAL CONTENT -->
+    <!-- <WelcomeItem>
+      <template #icon>
+        <EcosystemIcon />
+      </template>
+      <template #heading></template>
+      blahblahblah
+    </WelcomeItem> -->
+  </div>
+</template>
 
 <script setup>
 import WelcomeItem from './WelcomeItem.vue';
-import WaveIcon from './icons/IconWave.vue';
-import TechIcon from './icons/IconTech.vue';
 import EcosystemIcon from './icons/IconEcosystem.vue';  
 import CommunityIcon from './icons/IconCommunity.vue';
-// import CameraIcon from './icons/IconCamera.vue'; for use with Photos page
+import QuoteIcon from './icons/IconQuote.vue';
 import ContactModal from './ContactModal.vue';
 import { FwbButton } from 'flowbite-vue'
 import { ref } from 'vue';
+import { onMounted } from 'vue';
+import axios from 'axios';
 
 // Contact Modal Script
 const isContactModalOpen = ref(false);
@@ -19,96 +84,56 @@ const openContactModal = () => {
 const closeContactModal = () => {
   isContactModalOpen.value = false;
 };
+
+// Quote Fetch API
+const quote = ref('');
+
+// Function to fetch a random quote from the API
+const fetchRandomQuote = async () => {
+  const options = {
+    method: 'GET',
+    url: 'https://motivational-content.p.rapidapi.com/quotes',
+    params: { limit: '100' },
+    headers: {
+      'X-RapidAPI-Key': '16f87e2059mshe937410fce7f782p1d1cc9jsnae5dd54150f4',
+      'X-RapidAPI-Host': 'motivational-content.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    // Get a random quote from the response
+    const randomIndex = Math.floor(Math.random() * response.data.length);
+    quote.value = response.data[randomIndex].quote;
+    // Update local storage with the new quote
+    localStorage.setItem('quote', quote.value);
+  } catch (error) {
+    console.error('Failed to fetch new quote:', error);
+    // Fallback to local storage if the API call fails
+    getStoredQuote();
+  }
+}
+
+// Function to get the quote from localStorage
+const getStoredQuote = () => {
+  const storedQuote = localStorage.getItem('quote');
+  if (storedQuote) {
+    quote.value = storedQuote;
+  }
+}
+
+// Call fetchRandomQuote function directly when the component is mounted to ensure a new quote on each refresh
+onMounted(() => {
+  fetchRandomQuote(); // Always fetch a new quote on mount
+});
 </script>
-
-<template>
-  <div class="homeContainer">
-  <WelcomeItem>
-    <template #icon>
-      <WaveIcon />
-    </template>
-    <template #heading>Welcome to my portfolio!</template>
-
-    This portfolio is where I like to keep record of accomplishments, showcase my work, certificates, and anything else I wish to share! I will constantly keep updating this page as I learn more. It is built with  <a href="https://vitejs.dev/" target="_blank" rel="noopener" class="green-link">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener" class="green-link">Vue 3</a>, and migrated from my original portfolio built with <a href="https://create-react-app.dev/" target="_blank" rel="noopener" class="green-link">Create-React-App</a>. 
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <TechIcon />
-    </template>
-    <template #heading>Technologies</template>
-
-   I graduated from a 6 month Cohort through UC Berkeley Extenstion program in May of 2023. We focused on MERN Stack development with Javascript basis. I have since started learning other JS based frameworks, such as <a href="https://nextjs.org/" target="_blank" rel="noopener" class="green-link">Next.js</a>, and Vue/Vite. I am studying <a href="https://www.python.org/" target="_blank" rel="noopener" class="green-link">Python</a>, and intend to learn Java/C languages and learn more software development aswell. Visit the Technologies tab to see what else I've learned! 
-  </WelcomeItem>
-   
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Contact Me</template>
-
-    
-    <fwb-button color="yellow" size="xs" outline>
-    <a href="https://github.com/jhdk707" target="_blank" rel="noopener" class="button-link">
-       GitHub
-    </a>
-    </fwb-button>
-    <br>
-    <fwb-button color="yellow" size="xs" outline>
-      <a href="https://www.linkedin.com/in/jesse-h-085117272/" target="_blank" rel="noopener">LinkedIn</a>
-    </fwb-button>
-    <br>
-    <div>
-        <!-- Button to open the ContactModal -->
-        <fwb-button color="yellow" size="xs" outline @click="openContactModal">Email Me</fwb-button>
-
-        <!-- Include the ContactModal component -->
-        <ContactModal :isOpen="isContactModalOpen" @close="closeContactModal" />
-    </div>
-
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading> Resume & Certificates </template>
-    <p> Download links for my Resume and Certificates that I have acquired </p>
-    <fwb-button color="yellow" size="xs" outline @click="downloadResume">Resume</fwb-button>
-    <br>
-    <fwb-button color="yellow" size="xs" outline @click="downloadUcbcert">UCB Web Full-Stack Certificate</fwb-button>
-    
-  </WelcomeItem> 
-
-  <!-- <WelcomeItem>
-    <template #icon>
-      <CameraIcon />
-    </template>
-    <template #heading>Photography</template>
-
-    In my sparetime, I also really like taking photos of food and life. You can view them 
-    on the Photography tab.
-  </WelcomeItem> -->
-
-    <!-- PLACEHOLDER TEMPLATE FOR ADDITIONAL CONTENT -->
-  <!-- <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading></template>
-   blahblahblah
-  </WelcomeItem> -->
-</div>
-</template>
-
 
 <script>
 export default {
   methods: {
     downloadResume() {
       // Direct link to the Resume on Google Drive
-      const resumeLink = 'https://drive.google.com/file/d/1Lrb0K5mN_CPUp2JyMDL8et4-UtWvwPWL/view?usp=sharing';
+      const resumeLink = 'https://docs.google.com/document/d/19c8M7t-vj8eIJZKqQHP-VgHq5THDh4p0rAlKDfiZfQQ/edit?usp=sharing';
       window.open(resumeLink, '_blank');
     },
     downloadUcbcert() {
@@ -120,21 +145,68 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.homeContainer {
+  margin: 3em;
+  margin-top: 10em;
+}
 
-.homeContainer{
-  max-width: 70vw;
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.welcome-content {
+  display: flex;
   align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.icon-container {
+  margin-right: 1rem;
+}
+
+.welcome-paragraph {
+  flex: 1;
 }
 
 .green-link {
   color: #00a86b;
 }
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+
+.fwb-button {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 680px) {
+  .homeContainer {
+    margin: 1em;
+    margin-top: 5em;
+  }
+
+  .welcome-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .icon-container {
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2em;
+  font-weight: 700;
   }
 }
 </style>

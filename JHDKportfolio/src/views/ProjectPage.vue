@@ -1,7 +1,13 @@
 <!-- PROJECTS PAGE 11/29/2023 -->
 
 <template>
-  <div class="project-container flex flex-wrap justify-center">
+      <div class="title-content col-span-full flex flex-col justify-center items-center text-center my-12 space-y-4">
+      <h1>Projects</h1>
+      <h2>
+          This section is where you can view projects I've created on my own, open source credits as well as up-coming releases. Some of these are early projects from my bootcamp that I am expanding on, or making run better. 
+        </h2>
+    </div>
+  <div class="project-container grid mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 flex flex-wrap justify-center">
     <div v-for="project in projects" :key="project.id" class="max-w-sm bg-white border border-gray-200 shadow hover:shadow-lg-blue-500 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mx-4 my-8 hover:shadow-lg">
       <a :href="project.deployedLink">
         <img class="rounded-t-lg" :src="project.image" alt="screenshot of webpage" />
@@ -25,16 +31,18 @@
               </div>
             </div>
         </template>
-<script>
 
+
+<script>
 //IMAGE IMPORTS FOR PROJECT CARDS - 11/29/2023
-import NationalParksimg from '@/assets/images/NTLPRKSSCREENCAP.png';
-import NoteTakerimg from '@/assets/images/NoteTaker5000sc.png';
-import NeedleJunkeezimg from '@/assets/images/needlejunkeez.png';
+// import NationalParksimg from '@/assets/images/NTLPRKSSCREENCAP.png';
+// import NoteTakerimg from '@/assets/images/NoteTaker5000sc.png';
+// import NeedleJunkeezimg from '@/assets/images/needlejunkeez.png';
 import WorkdaySchimg from '@/assets/images/workdayscheduler.png';
 import WeatherDashimg from '@/assets/images/weatherapp.png';
 import PasswordGenimg from '@/assets/images/passwrdgensc.png';
 import AMSOMMimg from '@/assets/images/AMSOMM.png';
+import RecipeFinder from '@/assets/images/jessesrecipefinder.png';
 
 
 
@@ -52,53 +60,61 @@ export default {
         },
         {
           id: 2,
-          title: 'National Parks Reviewer 5000',
-          date: '4 / 5 / 24',
-          image: NationalParksimg,
-          description: 'A group project which included full-stack dev, client side, middleware, and back end. It was a lot of fun although we were met with some pretty big battles.',
-          deployedLink: 'https://lit-eyrie-51719.herokuapp.com/',
-          githubLink: 'https://github.com/jhdk707/NationalParksReviewer5000',
+          title: 'Ingredient I.Q',
+          image: RecipeFinder,
+          description: 'What started as a fun little rapidAPI experiment has now become an app that I am working on launching on mobile. I have learned how to use Ionic Capacitor to do Android and iOS builds and I am in the process of deploying to the Google Play Store!',
+          deployedLink: 'https://ingredientiq.netlify.app/',
+          githubLink: 'https://github.com/jhdk707/RecipeFinder',
         },
         {
           id: 3,
-          title: 'Note Taker App',
-          image: NoteTakerimg,
-          description: 'A basic app that takes and stores notes. Planning to convert this into a PWA in the future',
-          deployedLink: 'https://notetaker5000.herokuapp.com/',
-          githubLink: 'https://github.com/jhdk707/NoteTaker5000',
-        },
-        {
-          id: 4,
-          title: 'Groovana Project',
-          image: NeedleJunkeezimg,
-          description: 'Originated as a final project in my Berkely Cohort, my team and I are continuing to develop this into a working Social Media Platform',
-          deployedLink: 'https://needlejunkies.herokuapp.com/',
-          githubLink: 'https://github.com/jhdk707/NeedleJunkies',
-        },
-        {
-          id: 5,
           title: 'Workday Scheduler',
           image: WorkdaySchimg,
-          description: 'A basic workday scheduler that you can use to stay on task. It will alert via change of colors if you are ahead/ behind schedule.',
+          description: 'A basic workday scheduler that you can use to stay on task. It will alert via change of colors if you are ahead/ behind schedule. This was a project from my Full Stack Class which I plan on rebuilding and making much nicer.',
           deployedLink: 'https://jhdk707.github.io/WorkDayScheduler/',
           githubLink: 'https://github.com/jhdk707/WorkDayScheduler',
         },
         {
-          id: 6,
+          id: 4,
           title: 'Weather Dashboard',
           image: WeatherDashimg,
-          description: 'A basic workday scheduler that you can use to stay on task. It will alert via change of colors if you are ahead/ behind schedule.',
+          description: 'A basic Weather search that will tell you the current weather in any city world-wide. This was a project from my Full Stack Class which I plan on rebuilding and making much nicer.',
           deployedLink: 'https://jhdk707.github.io/WeatherApp/',
           githubLink: 'https://github.com/jhdk707/WeatherApp',
         },
         {
-          id: 7,
+          id: 5,
           title: 'Secure Password Generator',
           image: PasswordGenimg,
-          description: 'A customizable Password Generator. Allows you to chose between 8-128 char, and decide on what type of characters you need.',
+          description: 'A customizable Password Generator. Allows you to chose between 8-128 char, and decide on what type of characters you need. This was a project from my Full Stack Class which I plan on rebuilding and making much nicer, I started building a more advanced version of this using Python, that will also contain a protected DB of the saved passwords locally for more security.',
           deployedLink: 'https://jhdk707.github.io/Password-Generator-Assignment/',
           githubLink: 'https://github.com/jhdk707/Password-Generator-Assignment',
         },
+        // {
+        //   id: NULL,
+        //   title: 'National Parks Reviewer 5000',
+        //   date: '4 / 5 / 24',
+        //   image: NationalParksimg,
+        //   description: 'A group project which included full-stack dev, client side, middleware, and back end. It was a lot of fun although we were met with some pretty big battles.',
+        //   deployedLink: 'https://lit-eyrie-51719.herokuapp.com/',
+        //   githubLink: 'https://github.com/jhdk707/NationalParksReviewer5000',
+        // },
+        // {
+        //   id: NULL,
+        //   title: 'Note Taker App',
+        //   image: NoteTakerimg,
+        //   description: 'A basic app that takes and stores notes. Planning to convert this into a PWA in the future',
+        //   deployedLink: 'https://notetaker5000.herokuapp.com/',
+        //   githubLink: 'https://github.com/jhdk707/NoteTaker5000',
+        // },
+        // {
+        //   id: NULL,
+        //   title: 'Groovana Project',
+        //   image: NeedleJunkeezimg,
+        //   description: 'Originated as a final project in my Berkely Cohort, my team and I are continuing to develop this into a working Social Media Platform',
+        //   deployedLink: 'https://needlejunkies.herokuapp.com/',
+        //   githubLink: 'https://github.com/jhdk707/NeedleJunkies',
+        // },
       ],
     };
   },
@@ -112,13 +128,24 @@ export default {
 
 <style scoped>
 .project-container {
-  margin-top: 2%;
   color: white;
-  max-height: 800px;
-  max-width: 100vw;
+  max-width: 1400px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+.title-content {
+  display: flex;
+  align-items: center;
+  margin-top: 5em;
 }
 
 .project-container::-webkit-scrollbar {
@@ -132,10 +159,14 @@ export default {
 }
 
 /* Adjust for smaller screens */
-@media (max-width: 440px) {
+@media (max-width: 680px) {
   .project-card {
     flex: 0 1 calc(100% - 20px); /* One card per row on smaller screens */
   }
+  .project-container {
+    margin-top: 2.5em;
+  }
+
 }
 
 </style>

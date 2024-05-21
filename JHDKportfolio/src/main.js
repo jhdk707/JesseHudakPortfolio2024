@@ -1,5 +1,5 @@
 import './assets/main.css'
-import 'flowbite/dist/flowbite.css' // Adjust the path accordingly
+import 'flowbite/dist/flowbite.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

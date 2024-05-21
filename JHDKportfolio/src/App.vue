@@ -1,63 +1,136 @@
 
+<template>
+  <div class="body overflow-y-auto">
+    <div class="headercontainer">
+      <CustomNavbar />
+    </div>
+    <div class="viewcontainer">
+      <Loading v-if="loading" />
+      <transition
+        name="fade"
+        mode="out-in"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @leave="leave"
+      >
+        <RouterView v-slot="{ Component }">
+          <component :is="Component" @hook:mounted="loading = false" />
+        </RouterView>
+      </transition>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { RouterView } from 'vue-router'
-import MainHeader from '@/components/MainHeader.vue';
-// import CustomNavbar from './components/CustomNavbar.vue';
-import CustomFooter from './components/CustomFooter.vue';
+import CustomNavbar from './components/NavHeader.vue';
+import Loading from './components/LoadingSpinner.vue'
 </script>
 
-
- <template class="overflow-y-auto">
-      <div class="body">
-        <div class="headercontainer">
-        <MainHeader/>
-        </div>
-        <div class="viewcontainer">
-        <RouterView />
-        </div>
-        <div class="footercontainer">
-        <CustomFooter/>
-        </div>
-      </div>
-</template> 
-
-
+<script>
+export default {
+  name: 'App',
+  components: {
+    CustomNavbar,
+    Loading
+  },
+  data() {
+    return {
+      loading: false
+    }
+  },
+  methods: {
+    beforeEnter(el) {
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      setTimeout(() => {
+        el.style.transition = "opacity 0.5s ease-in-out";
+        el.style.opacity = 1;
+        done();
+      }, 100); 
+    },
+    leave(el, done) {
+      el.style.transition = "opacity 0.5s ease-in-out";
+      el.style.opacity = 0;
+      setTimeout(() => {
+        done();
+      }, 500); 
+    }
+  },
+  watch: {
+    $route() {
+      this.loading = true;
+    }
+  },
+  mounted() {
+    this.$router.beforeEach((_to, _from, next) => {
+      this.loading = true;
+      next();
+    });
+    this.$router.afterEach(() => {
+    });
+  }
+}
+</script>
 
 <style scoped>
-
 .body {
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Stack child elements vertically */
-  align-items: center; /* Center child elements horizontally */
-  justify-content: center; /* Center child elements vertically */
-  height: 90vh; /* Set full viewport height */
-}
-
-.viewcontainer {
-  width: 90vw;
-  margin-top: 10em;
-  padding: 1em;
-  justify-content: center;
-  align-items: center;
   display: flex;
-  overflow-y: auto; /* Enable vertical scrolling */
-  scrollbar-width: thin; /* For Firefox */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .headercontainer {
-  position: fixed; /* Fix header at the top */
-  top: 0; 
-  width: 100vw; 
-  z-index: 1000; /* Ensure header is above other content */
-  background-color: #181818;
-  padding-top: 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #181818; 
 }
 
-.footercontainer {
-  position: fixed; /* Fix footer at the bottom */
-  bottom: 0; 
-  width: 100vw; 
-  z-index: 1000; /* Ensure footer is above other content */
+.viewcontainer {
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+
+@media (max-width: 1200px) {
+
+.headercontainer {
+position: fixed;
+width: 100%;
+z-index: 1000;
+background-color: #181818;
+}
+
+.viewcontainer {
+width: 100vw;
+overflow-y: auto; 
+box-sizing: border-box;
+margin-top: 2em;
+}
+
+.body {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+margin: 0;
+padding: 0;
+overflow: hidden; 
+}
+}
 </style>
+
